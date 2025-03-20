@@ -25,7 +25,7 @@ func (c *ConsulContainer) Stop() error {
 }
 
 func setupConsul(ctx context.Context) (*ConsulContainer, error) {
-	consulContainer, err := consul.Run(ctx, "hashicorp/consul:1.20.1")
+	consulContainer, err := consul.Run(ctx, "hashicorp/consul:latest")
 	if err != nil {
 		return nil, fmt.Errorf("failed to start container: %s", err)
 	}

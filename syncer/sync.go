@@ -111,6 +111,10 @@ func walkKV(kv *api.KV, path string, walkFn func(pair *api.KVPair) error) error 
 	}
 
 	for _, pair := range response {
+		// Skip directory entries (keys ending with slash)
+		if strings.HasSuffix(pair.Key, "/") {
+			continue
+		}
 		if err := walkFn(pair); err != nil {
 			return err
 		}
